@@ -45,7 +45,7 @@ public class LastFmTest {
         this.steps.postComment("My test comment");
         Assert.assertTrue(steps.isCommentPosted("My test comment", "SerP_94"));
     }
-*/
+
 
     @Test(
             description = "Logout from Last.fm"
@@ -55,7 +55,18 @@ public class LastFmTest {
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
         this.steps.logoutFromLastFm();
         Assert.assertTrue(steps.isLoggedOut());
+    }*/
+
+    @Test(
+            description = "Like a song on Last.fm"
+    )
+    public void oneCanLikeSongOnLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.likeSong();
+        Assert.assertTrue(steps.isLiked());
     }
+
+
 
     @AfterMethod(
             description = "Stop Browser"

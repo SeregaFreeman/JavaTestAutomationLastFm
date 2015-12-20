@@ -2,6 +2,7 @@ package by.bsu.mmf.pogorelov.steps;
 
 import by.bsu.mmf.pogorelov.pages.LoginPage;
 import by.bsu.mmf.pogorelov.pages.HomePage;
+import by.bsu.mmf.pogorelov.pages.UserLibraryPage;
 import by.bsu.mmf.pogorelov.pages.UserPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -57,6 +58,11 @@ public class Steps
         userPage.postComment(comment);
     }
 
+    public void likeSong(){
+        UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
+        userLibraryPage.openPage();
+        userLibraryPage.likeSong();
+    }
 
     /*------------------------------------------------------------------------------------------*/
 
@@ -82,5 +88,10 @@ public class Steps
         return (userPage.checkLoginLink());
     }
 
+    public boolean isLiked(){
+        UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
+        userLibraryPage.openPage();
+        return(userLibraryPage.getSongStatus().equals("Dislike"));
+    }
 
 }
