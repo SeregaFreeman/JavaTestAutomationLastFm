@@ -1,7 +1,8 @@
 package by.bsu.mmf.pogorelov.steps;
 
 import by.bsu.mmf.pogorelov.pages.LoginPage;
-import by.bsu.mmf.pogorelov.pages.MainPage;
+import by.bsu.mmf.pogorelov.pages.HomePage;
+import by.bsu.mmf.pogorelov.pages.UserPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,7 @@ public class Steps
     private WebDriver driver;
 
     private final String QUERY = "Muse";
+
 
     public void initBrowser()
     {
@@ -29,6 +31,7 @@ public class Steps
         driver.quit();
     }
 
+    /*-------------------------------------------------------------------*/
     public void loginLastFm(String username, String password)
     {
         LoginPage loginPage = new LoginPage(driver);
@@ -36,15 +39,30 @@ public class Steps
         loginPage.login(username, password);
     }
 
-    public void siteSearch(String query){
-        MainPage mainPage = new MainPage(driver);
-        mainPage.openPage();
-        mainPage.search(query);
+    public void logoutFromLastFm(){
+        UserPage userPage = new UserPage(driver);
+        userPage.openPage();
+        userPage.logout();
     }
 
+    public void siteSearch(String query){
+        HomePage homePage = new HomePage(driver);
+        homePage.openPage();
+        homePage.search(query);
+    }
+
+    public void postComment(String comment){
+        UserPage userPage = new UserPage(driver);
+        userPage.openPage();
+        userPage.postComment(comment);
+    }
+
+
+    /*------------------------------------------------------------------------------------------*/
+
     public boolean isQueryCompleted(){
-        MainPage mainPage = new MainPage(driver);
-        return (mainPage.getSearchQueryResult().contains(QUERY));
+        HomePage homePage = new HomePage(driver);
+        return (homePage.getSearchQueryResult().contains(QUERY));
     }
 
     public boolean isLoggedIn(String username)
@@ -52,5 +70,17 @@ public class Steps
         LoginPage loginPage = new LoginPage(driver);
         return (loginPage.getLoggedInUserName().equals(username));
     }
+
+    public boolean isCommentPosted(String comment, String username){
+        UserPage userPage = new UserPage(driver);
+        return ((userPage.getPostedCommentText().equals(comment))&&(userPage.getPostedCommentUsername().equals(username)));
+    }
+
+    public boolean isLoggedOut(){
+        UserPage userPage = new UserPage(driver);
+        //loginPage.openPage();
+        return (userPage.checkLoginLink());
+    }
+
 
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage extends AbstractPage{
+public class HomePage extends AbstractPage{
 
     private final String BASE_URL = "http://last.fm/home";
 
@@ -18,7 +18,9 @@ public class MainPage extends AbstractPage{
     @FindBy(className = "content-top-header")
     private WebElement searchResultText;
 
-    public MainPage(WebDriver driver)
+    /*----------------------------------------------------------------------------------*/
+
+    public HomePage(WebDriver driver)
     {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -37,4 +39,5 @@ public class MainPage extends AbstractPage{
     }
 
     public String getSearchQueryResult(){return searchResultText.getText();}
+
 }

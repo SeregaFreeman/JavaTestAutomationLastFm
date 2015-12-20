@@ -20,7 +20,7 @@ public class LastFmTest {
         this.steps = new Steps();
         this.steps.initBrowser();
     }
-
+/*
     @Test(
             description = "Login to Last.fm"
     )
@@ -35,6 +35,26 @@ public class LastFmTest {
     public void oneCanSearchOnLastFm() {
         this.steps.siteSearch("Muse");
         Assert.assertTrue(steps.isQueryCompleted());
+    }
+*/
+    /*@Test(
+            description = "Seacrh on site"
+    )
+    public void oneCanPostToLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.postComment("My test comment");
+        Assert.assertTrue(steps.isCommentPosted("My test comment", "SerP_94"));
+    }
+*/
+
+    @Test(
+            description = "Logout from Last.fm"
+    )
+    public void oneCanLogoutFromLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+        this.steps.logoutFromLastFm();
+        Assert.assertTrue(steps.isLoggedOut());
     }
 
     @AfterMethod(

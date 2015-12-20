@@ -41,6 +41,9 @@ public class LoginPage extends AbstractPage
         buttonSubmit.click();
     }
 
+    public boolean isLogged(){
+        return (authConfirm.isDisplayed());
+    }
     public String getLoggedInUserName()
     {
         return authConfirm.getAttribute("alt");
