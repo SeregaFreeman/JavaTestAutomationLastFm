@@ -20,6 +20,8 @@ public class LastFmTest {
         this.steps = new Steps();
         this.steps.initBrowser();
     }
+
+    /*-------------------------------------------------------------*/
 /*
     @Test(
             description = "Login to Last.fm"
@@ -55,7 +57,7 @@ public class LastFmTest {
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
         this.steps.logoutFromLastFm();
         Assert.assertTrue(steps.isLoggedOut());
-    }*/
+    }
 
     @Test(
             description = "Like a song on Last.fm"
@@ -64,10 +66,18 @@ public class LastFmTest {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         this.steps.likeSong();
         Assert.assertTrue(steps.isLiked());
+    }*/
+
+    @Test(
+            description = "Like a song on Last.fm"
+    )
+    public void oneCanDeleteSongOnLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.deleteSong();
+        Assert.assertTrue(steps.isDeleted());
     }
 
-
-
+    /*------------------------------------------------------------------------*/
     @AfterMethod(
             description = "Stop Browser"
     )

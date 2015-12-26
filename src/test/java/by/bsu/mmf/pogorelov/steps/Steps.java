@@ -1,13 +1,15 @@
 package by.bsu.mmf.pogorelov.steps;
 
-import by.bsu.mmf.pogorelov.pages.LoginPage;
 import by.bsu.mmf.pogorelov.pages.HomePage;
+import by.bsu.mmf.pogorelov.pages.LoginPage;
 import by.bsu.mmf.pogorelov.pages.UserLibraryPage;
 import by.bsu.mmf.pogorelov.pages.UserPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import java.util.concurrent.TimeUnit;
-import java.lang.*;
 //import org.apache.log4j.Logger;
 
 public class Steps
@@ -64,6 +66,12 @@ public class Steps
         userLibraryPage.likeSong();
     }
 
+    public void deleteSong(){
+        UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
+        userLibraryPage.openPage();
+        userLibraryPage.deleteSong();
+    }
+
     /*------------------------------------------------------------------------------------------*/
 
     public boolean isQueryCompleted(){
@@ -88,10 +96,22 @@ public class Steps
         return (userPage.checkLoginLink());
     }
 
-    public boolean isLiked(){
+    /*public boolean isLiked(){
         UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
+        openNewTab();
+        userLibraryPage.openFavpage();
+        return(userLibraryPage.checkFavPage());
+    }*/
+
+    public boolean isDeleted(){
+        UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
+        openNewTab();
         userLibraryPage.openPage();
-        return(userLibraryPage.getSongStatus().equals("Dislike"));
+        String check = userLibraryPage.getSongTitle();
+        return(!(check.equals(userLibraryPage.deletedSong)));
     }
 
+    private void openNewTab(){
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t");
+    }
 }

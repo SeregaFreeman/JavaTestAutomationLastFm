@@ -21,11 +21,19 @@ public class UserLibraryPage extends AbstractPage{
     private WebElement unlikeSongButton;
 
     @FindBy(xpath = ".//*[@id='mantle_skin']//table/tbody//td[3]/span/a")
-    private WebElement songName;
+    public WebElement songName;
 
-    @FindBy(xpath = ".//*[@id='mantle_skin']/div[4]/div/div[1]/section[1]/table/tbody/tr/td[2]/div/div[2]/form")
+    @FindBy(xpath = "//*[@id='mantle_skin']/div[4]/div/div[1]/section[1]/table/tbody/tr/td[2]/div/div[1]/form")
     private WebElement songCanBeLiked;
+
+    @FindBy(xpath = ".//*[@id='user-loved-tracks-section']/table/tbody/tr[1]/td[3]/span/a")
+    private WebElement favPageSongName;
+
+    @FindBy(className = "chartlist-delete-button")
+    private WebElement deleteButton;
     /*----------------------------------------------------------------------------------*/
+
+    public String deletedSong;
 
     public UserLibraryPage(WebDriver driver)
     {
@@ -39,12 +47,22 @@ public class UserLibraryPage extends AbstractPage{
         driver.navigate().to(BASE_URL);
     }
 
+    public void openFavpage(){
+        driver.navigate().to("http://last.fm/user/SerP_94/loved");
+    }
 
+    /*public boolean checkFavPage(){
+        return(getSongTitle().replace(" ", "").equals(getSongTitle().replace(" ", "")));
+    }*/
 
     public String getSongTitle(){
         String song = songName.getAttribute("title");
         return song;
     }
+    /*public String getSongTitle(WebElement attr){
+        String song = attr.getAttribute("title");
+        return song;
+    }*/
 
     public String getSongStatus(){
         String status;
@@ -62,7 +80,14 @@ public class UserLibraryPage extends AbstractPage{
         if(getSongStatus().equals("Like")){
             Actions action = new Actions(driver);
             action.moveToElement(likeSongButtonToggle).perform();
-            likeSongButtonToggle.click();
+            likeSongButton.click();
         }
+    }
+
+    public void deleteSong(){
+        deletedSong = getSongTitle();
+        Actions action = new Actions(driver);
+        action.moveToElement(deleteButton).perform();
+        deleteButton.click();
     }
 }
