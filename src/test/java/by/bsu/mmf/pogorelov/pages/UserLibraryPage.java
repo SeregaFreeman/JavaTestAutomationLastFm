@@ -1,5 +1,6 @@
 package by.bsu.mmf.pogorelov.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserLibraryPage extends AbstractPage{
 
+    private final Logger logger = Logger.getLogger(UserLibraryPage.class);
     private final String UserName = "Serp_94";
     private final String BASE_URL = "http://last.fm/user/"+UserName+"/library";
 
@@ -82,6 +84,7 @@ public class UserLibraryPage extends AbstractPage{
             action.moveToElement(likeSongButtonToggle).perform();
             likeSongButton.click();
         }
+        logger.info("Song liked");
     }
 
     public void deleteSong(){
@@ -89,5 +92,6 @@ public class UserLibraryPage extends AbstractPage{
         Actions action = new Actions(driver);
         action.moveToElement(deleteButton).perform();
         deleteButton.click();
+        logger.info("Song deleted");
     }
 }

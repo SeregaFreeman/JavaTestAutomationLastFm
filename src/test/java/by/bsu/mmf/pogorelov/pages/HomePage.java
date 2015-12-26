@@ -1,5 +1,6 @@
 package by.bsu.mmf.pogorelov.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractPage{
 
+    private final Logger logger = Logger.getLogger(HomePage.class);
     private final String BASE_URL = "http://last.fm/home";
 
     @FindBy(id = "site-search")
@@ -36,6 +38,7 @@ public class HomePage extends AbstractPage{
     {
         inputSearchQuery.sendKeys(query);
         searchSubmitButton.click();
+        logger.info("Search completed");
     }
 
     public String getSearchQueryResult(){return searchResultText.getText();}

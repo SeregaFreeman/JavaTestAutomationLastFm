@@ -1,10 +1,10 @@
 package by.bsu.mmf.pogorelov;
 
 import by.bsu.mmf.pogorelov.steps.Steps;
-import junit.framework.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.Assert;
 
 public class LastFmTest {
 
@@ -22,15 +22,15 @@ public class LastFmTest {
     }
 
     /*-------------------------------------------------------------*/
-/*
+
     @Test(
             description = "Login to Last.fm"
     )
     public void oneCanLoginLastFm() {
-        this.steps.loginLastFm("SerP_94", "");
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
     }
-
+/*
     @Test(
             description = "Seacrh on site"
     )
@@ -66,7 +66,7 @@ public class LastFmTest {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         this.steps.likeSong();
         Assert.assertTrue(steps.isLiked());
-    }*/
+    }
 
     @Test(
             description = "Like a song on Last.fm"
@@ -75,7 +75,7 @@ public class LastFmTest {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         this.steps.deleteSong();
         Assert.assertTrue(steps.isDeleted());
-    }
+    }*/
 
     /*------------------------------------------------------------------------*/
     @AfterMethod(

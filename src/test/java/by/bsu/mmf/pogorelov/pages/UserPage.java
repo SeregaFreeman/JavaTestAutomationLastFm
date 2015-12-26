@@ -1,5 +1,6 @@
 package by.bsu.mmf.pogorelov.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserPage extends AbstractPage{
 
+    private final Logger logger = Logger.getLogger(UserPage.class);
     private final String UserName = "Serp_94";
     private final String BASE_URL = "http://last.fm/user/"+UserName;
 
@@ -57,6 +59,7 @@ public class UserPage extends AbstractPage{
     public void postComment(String comment){
         commentField.sendKeys(comment);
         commentButton.click();
+        logger.info("Comment posted");
     }
 
     public String getPostedCommentText(){
@@ -71,6 +74,7 @@ public class UserPage extends AbstractPage{
         Actions action = new Actions(driver);
         action.moveToElement(hoverDropdown).perform();
         logoutButton.click();
+        logger.info("User logged out");
     }
 
     public boolean checkLoginLink(){

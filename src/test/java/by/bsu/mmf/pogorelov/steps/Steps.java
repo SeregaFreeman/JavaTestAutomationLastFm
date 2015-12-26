@@ -8,15 +8,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.apache.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;
-//import org.apache.log4j.Logger;
 
 public class Steps
 {
 
     private WebDriver driver;
 
+    private final Logger logger = Logger.getLogger(Steps.class);
     private final String QUERY = "Muse";
 
 
@@ -26,7 +27,7 @@ public class Steps
 
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        //logger.info("Browser started");
+        logger.info("Browser started");
     }
 
     public void closeDriver()
