@@ -30,7 +30,7 @@ public class LastFmTest {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
     }
-/*
+
     @Test(
             description = "Seacrh on site"
     )
@@ -38,9 +38,9 @@ public class LastFmTest {
         this.steps.siteSearch("Muse");
         Assert.assertTrue(steps.isQueryCompleted());
     }
-*/
-    /*@Test(
-            description = "Seacrh on site"
+
+    @Test(
+            description = "Post comment on the wall"
     )
     public void oneCanPostToLastFm() {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
@@ -48,6 +48,23 @@ public class LastFmTest {
         Assert.assertTrue(steps.isCommentPosted("My test comment", "SerP_94"));
     }
 
+    /*@Test(
+            description = "Like a song on Last.fm"
+    )
+    public void oneCanLikeSongOnLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.likeSong();
+        Assert.assertTrue(steps.isLiked());
+    }*/
+
+    @Test(
+            description = "Delete a song from user library on Last.fm"
+    )
+    public void oneCanDeleteSongOnLastFm() {
+        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.deleteSong();
+        Assert.assertTrue(steps.isDeleted());
+    }
 
     @Test(
             description = "Logout from Last.fm"
@@ -58,24 +75,6 @@ public class LastFmTest {
         this.steps.logoutFromLastFm();
         Assert.assertTrue(steps.isLoggedOut());
     }
-
-    @Test(
-            description = "Like a song on Last.fm"
-    )
-    public void oneCanLikeSongOnLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        this.steps.likeSong();
-        Assert.assertTrue(steps.isLiked());
-    }
-
-    @Test(
-            description = "Like a song on Last.fm"
-    )
-    public void oneCanDeleteSongOnLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        this.steps.deleteSong();
-        Assert.assertTrue(steps.isDeleted());
-    }*/
 
     /*------------------------------------------------------------------------*/
     @AfterMethod(

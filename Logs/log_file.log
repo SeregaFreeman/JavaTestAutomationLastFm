@@ -1,2 +1,38 @@
 2015-12-26 16:41:58 INFO  Steps:30 - Browser started
 2015-12-26 16:42:27 INFO  LoginPage:43 - User logged in
+2015-12-29 03:01:21 INFO  Steps:29 - Browser started
+2015-12-29 03:01:40 INFO  LoginPage:43 - User logged in
+2015-12-29 03:01:56 INFO  Steps:35 - Browser closed
+2015-12-29 03:02:05 INFO  Steps:29 - Browser started
+2015-12-29 03:02:18 INFO  LoginPage:43 - User logged in
+2015-12-29 03:02:39 INFO  UserPage:77 - User logged out
+2015-12-29 03:02:51 INFO  Steps:35 - Browser closed
+2015-12-29 03:03:01 INFO  Steps:29 - Browser started
+2015-12-29 03:03:14 INFO  LoginPage:43 - User logged in
+2015-12-29 03:03:30 INFO  UserPage:62 - Comment posted
+2015-12-29 03:03:31 INFO  Steps:35 - Browser closed
+2015-12-29 03:03:39 INFO  Steps:29 - Browser started
+2015-12-29 03:03:51 INFO  HomePage:41 - Search completed
+2015-12-29 03:04:01 INFO  Steps:35 - Browser closed
+2015-12-29 03:07:38 INFO  Steps:29 - Browser started
+2015-12-29 03:08:25 INFO  Steps:35 - Browser closed
+2015-12-29 03:08:32 INFO  Steps:29 - Browser started
+2015-12-29 03:08:46 INFO  LoginPage:43 - User logged in
+2015-12-29 03:11:09 INFO  Steps:29 - Browser started
+2015-12-29 03:11:23 INFO  LoginPage:43 - User logged in
+2015-12-29 03:11:39 INFO  UserLibraryPage:96 - Song deleted
+2015-12-29 03:11:49 INFO  Steps:35 - Browser closed
+2015-12-29 03:11:58 INFO  Steps:29 - Browser started
+2015-12-29 03:12:11 INFO  LoginPage:43 - User logged in
+2015-12-29 03:12:23 INFO  Steps:35 - Browser closed
+2015-12-29 03:12:30 INFO  Steps:29 - Browser started
+2015-12-29 03:12:44 INFO  LoginPage:43 - User logged in
+2015-12-29 03:13:12 INFO  UserPage:77 - User logged out
+2015-12-29 03:13:22 INFO  Steps:35 - Browser closed
+2015-12-29 03:13:31 INFO  Steps:29 - Browser started
+2015-12-29 03:13:44 INFO  LoginPage:43 - User logged in
+2015-12-29 03:14:02 INFO  UserPage:62 - Comment posted
+2015-12-29 03:14:04 INFO  Steps:35 - Browser closed
+2015-12-29 03:14:12 INFO  Steps:29 - Browser started
+2015-12-29 03:14:23 INFO  HomePage:41 - Search completed
+2015-12-29 03:14:34 INFO  Steps:35 - Browser closed

@@ -24,7 +24,6 @@ public class Steps
     public void initBrowser()
     {
         driver = new FirefoxDriver();
-
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         logger.info("Browser started");
@@ -33,6 +32,7 @@ public class Steps
     public void closeDriver()
     {
         driver.quit();
+        logger.info("Browser closed");
     }
 
     /*-------------------------------------------------------------------*/
@@ -61,11 +61,12 @@ public class Steps
         userPage.postComment(comment);
     }
 
-    public void likeSong(){
+    /*public void likeSong(){
         UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
         userLibraryPage.openPage();
         userLibraryPage.likeSong();
     }
+    */
 
     public void deleteSong(){
         UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
@@ -112,7 +113,11 @@ public class Steps
         return(!(check.equals(userLibraryPage.deletedSong)));
     }
 
+    /*--------------------------------------------------------------------------------------------------*/
     private void openNewTab(){
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t");
+    }
+    private void refreshTab(){
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"r");
     }
 }

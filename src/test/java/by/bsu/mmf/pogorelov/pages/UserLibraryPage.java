@@ -49,11 +49,12 @@ public class UserLibraryPage extends AbstractPage{
         driver.navigate().to(BASE_URL);
     }
 
+    /*
     public void openFavpage(){
         driver.navigate().to("http://last.fm/user/SerP_94/loved");
     }
 
-    /*public boolean checkFavPage(){
+    public boolean checkFavPage(){
         return(getSongTitle().replace(" ", "").equals(getSongTitle().replace(" ", "")));
     }*/
 
@@ -78,14 +79,14 @@ public class UserLibraryPage extends AbstractPage{
         return status;
     }
 
-    public void likeSong(){
+    /*public void likeSong(){
         if(getSongStatus().equals("Like")){
             Actions action = new Actions(driver);
             action.moveToElement(likeSongButtonToggle).perform();
             likeSongButton.click();
         }
         logger.info("Song liked");
-    }
+    }*/
 
     public void deleteSong(){
         deletedSong = getSongTitle();
