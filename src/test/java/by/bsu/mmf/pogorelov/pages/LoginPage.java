@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class LoginPage extends AbstractPage
 {
     private final Logger logger = Logger.getLogger(LoginPage.class);
@@ -21,7 +23,7 @@ public class LoginPage extends AbstractPage
     private WebElement buttonSubmit;
 
     @FindBy(className = "auth-avatar-desktop")
-    private WebElement authConfirm;
+    private List<WebElement> authConfirm;
 
     public LoginPage(WebDriver driver)
     {
@@ -33,6 +35,7 @@ public class LoginPage extends AbstractPage
     public void openPage()
     {
         driver.navigate().to(BASE_URL);
+        logger.info("Login page opened");
     }
 
     public void login(String username, String password)
@@ -40,16 +43,19 @@ public class LoginPage extends AbstractPage
         inputUsername.sendKeys(username);
         inputPassword.sendKeys(password);
         buttonSubmit.click();
-        logger.info("User logged in");
     }
 
     public boolean isLogged(){
-        return (authConfirm.isDisplayed());
+        return (!authConfirm.isEmpty());
     }
 
     public String getLoggedInUserName()
     {
-        return authConfirm.getAttribute("alt");
+        boolean check = authConfirm.isEmpty();
+        if (check)
+            return null;
+        else
+            return authConfirm.get(0).getAttribute("alt");
     }
 
 }

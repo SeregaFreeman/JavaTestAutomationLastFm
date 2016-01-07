@@ -32,7 +32,7 @@ public class Steps
     public void closeDriver()
     {
         driver.quit();
-        logger.info("Browser closed");
+        logger.info("Browser closed\n====================================");
     }
 
     /*-------------------------------------------------------------------*/
@@ -84,7 +84,7 @@ public class Steps
     public boolean isLoggedIn(String username)
     {
         LoginPage loginPage = new LoginPage(driver);
-        return (loginPage.getLoggedInUserName().equals(username));
+        return (loginPage.getLoggedInUserName()!=null&&loginPage.getLoggedInUserName().equals(username));
     }
 
     public boolean isCommentPosted(String comment, String username){
@@ -105,9 +105,9 @@ public class Steps
         return(userLibraryPage.checkFavPage());
     }*/
 
-    public boolean isDeleted(){
+    public boolean isSongDeleted(){
         UserLibraryPage userLibraryPage = new UserLibraryPage(driver);
-        openNewTab();
+        refreshTab();
         userLibraryPage.openPage();
         String check = userLibraryPage.getSongTitle();
         return(!(check.equals(userLibraryPage.deletedSong)));

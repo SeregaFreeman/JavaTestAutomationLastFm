@@ -38,7 +38,6 @@ public class HomePage extends AbstractPage{
     {
         inputSearchQuery.sendKeys(query);
         searchSubmitButton.click();
-        logger.info("Search completed");
     }
 
     public String getSearchQueryResult(){return searchResultText.getText();}

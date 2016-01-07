@@ -1,15 +1,16 @@
 package by.bsu.mmf.pogorelov;
 
 import by.bsu.mmf.pogorelov.steps.Steps;
+import org.apache.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 
 public class LastFmTest {
 
     private Steps steps;
-
+    private final Logger logger = Logger.getLogger(LastFmTest.class);
     public LastFmTest() {
     }
 
@@ -29,6 +30,12 @@ public class LastFmTest {
     public void oneCanLoginLastFm() {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+        boolean actualState = steps.isLoggedIn("SerP_94");
+        if(actualState)
+            logger.info("User is logged in successfully");
+        else
+            logger.error("User is not logged in");
+        Assert.assertTrue(actualState);
     }
 
     @Test(
@@ -36,6 +43,11 @@ public class LastFmTest {
     )
     public void oneCanSearchOnLastFm() {
         this.steps.siteSearch("Muse");
+        boolean actualState = steps.isQueryCompleted();
+        if(actualState)
+            logger.info("Search is completed successfully");
+        else
+            logger.error("Search is not completed");
         Assert.assertTrue(steps.isQueryCompleted());
     }
 
@@ -44,8 +56,17 @@ public class LastFmTest {
     )
     public void oneCanPostToLastFm() {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        this.steps.postComment("My test comment");
-        Assert.assertTrue(steps.isCommentPosted("My test comment", "SerP_94"));
+        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+
+        this.steps.postComment("My test comment1");
+
+        boolean actualState = steps.isCommentPosted("My test comment1", "SerP_94");
+        if(actualState)
+            logger.info("Comment is posted successfully");
+        else
+            logger.error("Comment is not posted");
+
+        Assert.assertTrue(steps.isCommentPosted("My test comment1", "SerP_94"));
     }
 
     /*@Test(
@@ -62,8 +83,16 @@ public class LastFmTest {
     )
     public void oneCanDeleteSongOnLastFm() {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+
         this.steps.deleteSong();
-        Assert.assertTrue(steps.isDeleted());
+        boolean actualState = steps.isSongDeleted();
+        if(actualState)
+            logger.info("Song is deleted successfully");
+        else
+            logger.error("Song is not deleted");
+
+        Assert.assertTrue(steps.isSongDeleted());
     }
 
     @Test(
@@ -73,6 +102,13 @@ public class LastFmTest {
         this.steps.loginLastFm("SerP_94", "psdaalastfm94");
         Assert.assertTrue(steps.isLoggedIn("SerP_94"));
         this.steps.logoutFromLastFm();
+
+        boolean actualState = steps.isLoggedOut();
+        if(actualState)
+            logger.info("User is logged out successfully");
+        else
+            logger.error("User is not logged out");
+
         Assert.assertTrue(steps.isLoggedOut());
     }
 

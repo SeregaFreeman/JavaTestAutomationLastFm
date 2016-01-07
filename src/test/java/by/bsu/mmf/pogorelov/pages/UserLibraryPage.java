@@ -47,6 +47,7 @@ public class UserLibraryPage extends AbstractPage{
     public void openPage()
     {
         driver.navigate().to(BASE_URL);
+        logger.info("User library page opened");
     }
 
     /*
@@ -93,6 +94,5 @@ public class UserLibraryPage extends AbstractPage{
         Actions action = new Actions(driver);
         action.moveToElement(deleteButton).perform();
         deleteButton.click();
-        logger.info("Song deleted");
     }
 }

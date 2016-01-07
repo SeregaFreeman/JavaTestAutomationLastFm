@@ -54,12 +54,12 @@ public class UserPage extends AbstractPage{
     public void openPage()
     {
         driver.navigate().to(BASE_URL);
+        logger.info("User page opened");
     }
 
     public void postComment(String comment){
         commentField.sendKeys(comment);
         commentButton.click();
-        logger.info("Comment posted");
     }
 
     public String getPostedCommentText(){
@@ -74,7 +74,6 @@ public class UserPage extends AbstractPage{
         Actions action = new Actions(driver);
         action.moveToElement(hoverDropdown).perform();
         logoutButton.click();
-        logger.info("User logged out");
     }
 
     public boolean checkLoginLink(){
