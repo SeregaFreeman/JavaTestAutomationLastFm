@@ -23,7 +23,7 @@ public class UserLibraryPage extends AbstractPage{
     private WebElement unlikeSongButton;
 
     @FindBy(xpath = ".//*[@id='mantle_skin']//table/tbody//td[3]/span/a")
-    public WebElement songName;
+    private WebElement songName;
 
     @FindBy(xpath = "//*[@id='mantle_skin']/div[4]/div/div[1]/section[1]/table/tbody/tr/td[2]/div/div[1]/form")
     private WebElement songCanBeLiked;
@@ -57,16 +57,18 @@ public class UserLibraryPage extends AbstractPage{
 
     public boolean checkFavPage(){
         return(getSongTitle().replace(" ", "").equals(getSongTitle().replace(" ", "")));
-    }*/
+    }
+    */
 
     public String getSongTitle(){
         String song = songName.getAttribute("title");
         return song;
     }
+
     /*public String getSongTitle(WebElement attr){
         String song = attr.getAttribute("title");
         return song;
-    }*/
+    }
 
     public String getSongStatus(){
         String status;
@@ -80,7 +82,7 @@ public class UserLibraryPage extends AbstractPage{
         return status;
     }
 
-    /*public void likeSong(){
+    public void likeSong(){
         if(getSongStatus().equals("Like")){
             Actions action = new Actions(driver);
             action.moveToElement(likeSongButtonToggle).perform();

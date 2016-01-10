@@ -11,6 +11,11 @@ public class LastFmTest {
 
     private Steps steps;
     private final Logger logger = Logger.getLogger(LastFmTest.class);
+    private final String login = "SerP_94";
+    private final String password = "psdaalastfm94";
+    private final String searchQuery = "Muse";
+    private final String testComment = "My test comment 1!";
+
     public LastFmTest() {
     }
 
@@ -28,13 +33,13 @@ public class LastFmTest {
             description = "Login to Last.fm"
     )
     public void oneCanLoginLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
-        boolean actualState = steps.isLoggedIn("SerP_94");
+        this.steps.loginLastFm(login, password);
+        Assert.assertTrue(steps.isLoggedIn(login));
+        boolean actualState = steps.isLoggedIn(login);
         if(actualState)
-            logger.info("User is logged in successfully");
+            logger.info("User "+ login + " is logged in successfully");
         else
-            logger.error("User is not logged in");
+            logger.error("User "+ login + " is not logged in");
         Assert.assertTrue(actualState);
     }
 
@@ -42,31 +47,31 @@ public class LastFmTest {
             description = "Seacrh on site"
     )
     public void oneCanSearchOnLastFm() {
-        this.steps.siteSearch("Muse");
-        boolean actualState = steps.isQueryCompleted();
+        this.steps.siteSearch(searchQuery);
+        boolean actualState = steps.isQueryCompleted(searchQuery);
         if(actualState)
             logger.info("Search is completed successfully");
         else
             logger.error("Search is not completed");
-        Assert.assertTrue(steps.isQueryCompleted());
+        Assert.assertTrue(steps.isQueryCompleted(searchQuery));
     }
 
     @Test(
             description = "Post comment on the wall"
     )
     public void oneCanPostToLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+        this.steps.loginLastFm(login, password);
+        Assert.assertTrue(steps.isLoggedIn(login));
 
-        this.steps.postComment("My test comment1");
+        this.steps.postComment(testComment);
 
-        boolean actualState = steps.isCommentPosted("My test comment1", "SerP_94");
+        boolean actualState = steps.isCommentPosted(testComment, login);
         if(actualState)
             logger.info("Comment is posted successfully");
         else
             logger.error("Comment is not posted");
 
-        Assert.assertTrue(steps.isCommentPosted("My test comment1", "SerP_94"));
+        Assert.assertTrue(steps.isCommentPosted(testComment, login));
     }
 
     /*@Test(
@@ -82,8 +87,8 @@ public class LastFmTest {
             description = "Delete a song from user library on Last.fm"
     )
     public void oneCanDeleteSongOnLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+        this.steps.loginLastFm(login, password);
+        Assert.assertTrue(steps.isLoggedIn(login));
 
         this.steps.deleteSong();
         boolean actualState = steps.isSongDeleted();
@@ -99,8 +104,8 @@ public class LastFmTest {
             description = "Logout from Last.fm"
     )
     public void oneCanLogoutFromLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
-        Assert.assertTrue(steps.isLoggedIn("SerP_94"));
+        this.steps.loginLastFm(login, password);
+        Assert.assertTrue(steps.isLoggedIn(login));
         this.steps.logoutFromLastFm();
 
         boolean actualState = steps.isLoggedOut();

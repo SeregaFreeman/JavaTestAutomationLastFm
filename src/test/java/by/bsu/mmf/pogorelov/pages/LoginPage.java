@@ -51,11 +51,10 @@ public class LoginPage extends AbstractPage
 
     public String getLoggedInUserName()
     {
-        boolean check = authConfirm.isEmpty();
-        if (check)
-            return null;
-        else
+        if (isLogged())
             return authConfirm.get(0).getAttribute("alt");
+        else
+            return null;
     }
 
 }

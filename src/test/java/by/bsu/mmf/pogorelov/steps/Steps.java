@@ -18,14 +18,13 @@ public class Steps
     private WebDriver driver;
 
     private final Logger logger = Logger.getLogger(Steps.class);
-    private final String QUERY = "Muse";
 
 
     public void initBrowser()
     {
         driver = new FirefoxDriver();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         logger.info("Browser started");
     }
 
@@ -76,9 +75,9 @@ public class Steps
 
     /*------------------------------------------------------------------------------------------*/
 
-    public boolean isQueryCompleted(){
+    public boolean isQueryCompleted(String searchQuery){
         HomePage homePage = new HomePage(driver);
-        return (homePage.getSearchQueryResult().contains(QUERY));
+        return (homePage.getSearchQueryResult().contains(searchQuery));
     }
 
     public boolean isLoggedIn(String username)
@@ -89,12 +88,12 @@ public class Steps
 
     public boolean isCommentPosted(String comment, String username){
         UserPage userPage = new UserPage(driver);
+        userPage.openPage();
         return ((userPage.getPostedCommentText().equals(comment))&&(userPage.getPostedCommentUsername().equals(username)));
     }
 
     public boolean isLoggedOut(){
         UserPage userPage = new UserPage(driver);
-        //loginPage.openPage();
         return (userPage.checkLoginLink());
     }
 
