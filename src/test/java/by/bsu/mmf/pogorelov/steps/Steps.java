@@ -34,6 +34,7 @@ public class Steps
         logger.info("Browser closed\n====================================");
     }
 
+
     /*-------------------------------------------------------------------*/
     public void loginLastFm(String username, String password)
     {
@@ -113,10 +114,11 @@ public class Steps
     }
 
     /*--------------------------------------------------------------------------------------------------*/
-    private void openNewTab(){
+    public void openNewTab(){
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t");
     }
-    private void refreshTab(){
+    public void refreshTab(){
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"r");
     }
+    public void openNewWindow(){driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"n");}
 }

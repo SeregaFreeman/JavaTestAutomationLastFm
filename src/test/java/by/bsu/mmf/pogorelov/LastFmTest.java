@@ -3,8 +3,8 @@ package by.bsu.mmf.pogorelov;
 import by.bsu.mmf.pogorelov.steps.Steps;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class LastFmTest {
@@ -19,7 +19,7 @@ public class LastFmTest {
     public LastFmTest() {
     }
 
-    @BeforeMethod(
+    @BeforeSuite(
             description = "Init browser"
     )
     public void setUp() {
@@ -98,14 +98,18 @@ public class LastFmTest {
             logger.error("Song is not deleted");
 
         Assert.assertTrue(steps.isSongDeleted());
+
+        this.steps.logoutFromLastFm();
+        Assert.assertTrue(steps.isLoggedOut());
+        logger.info("user is logged out");
     }
 
     @Test(
             description = "Logout from Last.fm"
     )
     public void oneCanLogoutFromLastFm() {
-        this.steps.loginLastFm(login, password);
-        Assert.assertTrue(steps.isLoggedIn(login));
+        //this.steps.loginLastFm(login, password);
+        //Assert.assertTrue(steps.isLoggedIn(login));
         this.steps.logoutFromLastFm();
 
         boolean actualState = steps.isLoggedOut();
@@ -118,7 +122,7 @@ public class LastFmTest {
     }
 
     /*------------------------------------------------------------------------*/
-    @AfterMethod(
+    @AfterSuite(
             description = "Stop Browser"
     )
     public void stopBrowser() {
