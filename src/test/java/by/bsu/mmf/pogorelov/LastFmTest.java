@@ -11,8 +11,8 @@ public class LastFmTest {
 
     private Steps steps;
     private final Logger logger = Logger.getLogger(LastFmTest.class);
-    private final String login = "SerP_94";
-    private final String password = "psdaalastfm94";
+    private final String login = "";
+    private final String password = "";
     private final String searchQuery = "Muse";
     private final String testComment = "My test comment 1!";
 
@@ -78,7 +78,7 @@ public class LastFmTest {
             description = "Like a song on Last.fm"
     )
     public void oneCanLikeSongOnLastFm() {
-        this.steps.loginLastFm("SerP_94", "psdaalastfm94");
+        this.steps.loginLastFm("", "");
         this.steps.likeSong();
         Assert.assertTrue(steps.isLiked());
     }*/

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class UserPage extends AbstractPage{
 
     private final Logger logger = Logger.getLogger(UserPage.class);
-    private final String UserName = "Serp_94";
+    private final String UserName = "";
     private final String BASE_URL = "http://last.fm/user/"+UserName;
 
     @FindBy(id = "site-search")

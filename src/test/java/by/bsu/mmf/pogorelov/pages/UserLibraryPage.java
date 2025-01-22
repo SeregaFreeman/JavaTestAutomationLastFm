@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class UserLibraryPage extends AbstractPage{
 
     private final Logger logger = Logger.getLogger(UserLibraryPage.class);
-    private final String UserName = "Serp_94";
+    private final String UserName = "";
     private final String BASE_URL = "http://last.fm/user/"+UserName+"/library";
 
     @FindBy(className = "love-button")
